@@ -1,8 +1,11 @@
 import { CheckIcon, RepeatIcon } from '@chakra-ui/icons';
 import { Box, Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Select } from '@chakra-ui/react';
+import { useNavigate } from 'react-router';
 import ReactSelect from 'react-select';
 
 function CreateReportPage() {
+  const navigate = useNavigate();
+
   const dbs = [
     {
       label: 'Prod Snowflake',
@@ -178,7 +181,13 @@ function CreateReportPage() {
       </Box>
       <Flex gap={2} mt={5} flexDirection="column">
         <Box textAlign="right">
-          <Button colorScheme="red" variant="ghost">
+          <Button
+            colorScheme="red"
+            variant="ghost"
+            onClick={() => {
+              navigate('/admin');
+            }}
+          >
             Cancel
           </Button>
           <Button colorScheme="blue" leftIcon={<CheckIcon />} ml={2}>

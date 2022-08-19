@@ -52,7 +52,7 @@ function ReportPreviewPage() {
 
   useEffect(() => {
     setData(report.data);
-    if (report.data) {
+    if (report.data && report.data.length > 0) {
       setColumns(Object.keys(report?.data?.[0]) || []);
     } else {
       setColumns([]);

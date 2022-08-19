@@ -353,5 +353,5 @@ export function getData(isAdmin: boolean, includeData = true) {
 }
 
 export function getReport(id: string | number) {
-  return getData(false, true).find((v) => v.id == id);
+  return getData(true, true).find((v) => v.id == id);
 }

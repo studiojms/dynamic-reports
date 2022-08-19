@@ -13,6 +13,7 @@ import {
   Td,
   Th,
   Thead,
+  Tooltip,
   Tr,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
@@ -48,16 +49,20 @@ function ReportListPage() {
                     ))}
                     <Td isNumeric>
                       <Link to={`/report/${row.id}`}>
-                        <IconButton
-                          colorScheme="orange"
-                          variant="outline"
-                          aria-label="Preview"
-                          icon={<SearchIcon />}
-                          size="xs"
-                        />
+                        <Tooltip label="Preview">
+                          <IconButton
+                            colorScheme="orange"
+                            variant="outline"
+                            aria-label="Preview"
+                            icon={<SearchIcon />}
+                            size="xs"
+                          />
+                        </Tooltip>
                       </Link>
                       <Menu>
-                        <MenuButton as={IconButton} icon={<DownloadIcon />} size="xs" ml={2} colorScheme="orange" />
+                        <Tooltip label="Export">
+                          <MenuButton as={IconButton} icon={<DownloadIcon />} size="xs" ml={2} colorScheme="orange" />
+                        </Tooltip>
                         <MenuList>
                           <MenuItem>Excel (.xlsx)</MenuItem>
                           <MenuItem>CSV</MenuItem>

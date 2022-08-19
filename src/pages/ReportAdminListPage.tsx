@@ -1,5 +1,18 @@
-import { AddIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons';
-import { Box, Button, Heading, IconButton, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { AddIcon, DeleteIcon, EditIcon, SearchIcon } from '@chakra-ui/icons';
+import {
+  Box,
+  Button,
+  Heading,
+  IconButton,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tooltip,
+  Tr,
+} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { getData } from '../utils/data';
 import { renderColumn } from '../utils/utils';
@@ -40,21 +53,37 @@ function ReportAdminListPage() {
                       return <Td key={`${column}-${row.id}-${idx}`}>{renderColumn(row[column])}</Td>;
                     })}
                     <Td isNumeric>
-                      <IconButton
-                        colorScheme="red"
-                        variant="ghost"
-                        aria-label="Delete"
-                        icon={<DeleteIcon />}
-                        size="xs"
-                      />
-                      <IconButton
-                        colorScheme="blue"
-                        aria-label="Edit"
-                        icon={<EditIcon />}
-                        size="xs"
-                        ml={2}
-                        variant="ghost"
-                      />
+                      <Link to={`/report/${row.id}`}>
+                        <Tooltip label="Preview">
+                          <IconButton
+                            colorScheme="orange"
+                            variant="outline"
+                            aria-label="Preview"
+                            icon={<SearchIcon />}
+                            size="xs"
+                          />
+                        </Tooltip>
+                      </Link>
+                      <Tooltip label="Delete report">
+                        <IconButton
+                          colorScheme="red"
+                          variant="ghost"
+                          aria-label="Delete"
+                          ml={2}
+                          icon={<DeleteIcon />}
+                          size="xs"
+                        />
+                      </Tooltip>
+                      <Tooltip label="Edit report">
+                        <IconButton
+                          colorScheme="blue"
+                          aria-label="Edit"
+                          icon={<EditIcon />}
+                          size="xs"
+                          ml={2}
+                          variant="ghost"
+                        />
+                      </Tooltip>
                     </Td>
                   </Tr>
                 );
