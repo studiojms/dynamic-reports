@@ -139,7 +139,11 @@ function ReportPreviewPage() {
             <AccordionPanel>
               {new Array(totalOptionalFilters).fill('').map((_, key) => {
                 return (
-                  <ReportFilter key={key} columns={columns} onAddClick={() => setTotalOptionalFilters((v) => v + 1)} />
+                  <ReportFilter
+                    key={key}
+                    columns={['', ...columns]}
+                    onAddClick={() => setTotalOptionalFilters((v) => v + 1)}
+                  />
                 );
               })}
             </AccordionPanel>

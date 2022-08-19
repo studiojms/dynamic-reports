@@ -1,9 +1,26 @@
 import { CheckIcon, RepeatIcon } from '@chakra-ui/icons';
-import { Box, Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Select } from '@chakra-ui/react';
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  Button,
+  Checkbox,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+} from '@chakra-ui/react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import ReactSelect from 'react-select';
+import ReportFilter from '../components/ReportFilter';
 
 function CreateReportPage() {
+  const [totalOptionalFilters, setTotalOptionalFilters] = useState(1);
   const navigate = useNavigate();
 
   const dbs = [
@@ -178,6 +195,31 @@ function CreateReportPage() {
             </FormControl>
           </Box>
         </Flex>
+        <Box mt={8}>
+          <Accordion allowToggle>
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box flex="1" textAlign="left" fontWeight={500}>
+                    Aditional filters
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel>
+                {new Array(totalOptionalFilters).fill('').map((_, key) => {
+                  return (
+                    <ReportFilter
+                      key={key}
+                      columns={['', ...fields.map((f) => f.value)]}
+                      onAddClick={() => setTotalOptionalFilters((v) => v + 1)}
+                    />
+                  );
+                })}
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+        </Box>
       </Box>
       <Flex gap={2} mt={5} flexDirection="column">
         <Box textAlign="right">

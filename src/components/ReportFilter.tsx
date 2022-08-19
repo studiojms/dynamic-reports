@@ -1,6 +1,5 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { Box, Flex, FormControl, FormLabel, IconButton, Input, Select } from '@chakra-ui/react';
-import ReactSelect from 'react-select';
 
 function ReportFilter({ columns, onAddClick }: { columns: string[]; onAddClick: () => void }) {
   const operators = [
