@@ -97,7 +97,7 @@ export function getData(isAdmin: boolean, includeData = true) {
       name: `Segment Active Products`,
       database: 'Cobalt Aurora',
       dbObject: 'SEGMENT_PRODUCT',
-      description: 'Rank the most popular keywords',
+      description: 'Active products for a specific segment',
       public: true,
       requiredFilters: ['segment_id'],
       filters: [
