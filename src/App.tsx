@@ -11,7 +11,7 @@ const ReportPreviewPage = lazy(() => import('./pages/ReportPreviewPage'));
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/dynamic-reports">
       <Navbar>
         <Container maxW="10xl">
           <Suspense
